@@ -12,8 +12,7 @@ export default function Home() {
   const [searchMode, setSearchMode] = useState(false)
   const [products, setProducts] = useState([])
   const [searchProducts, setSearchProducts] = useState([]);
-  const [CategorizedProducts, setCategorizedProducts] = 
-  useState([]);
+  const [CategorizedProducts, setCategorizedProducts] = useState([]);
 
   const search= useSelector((state)=> state.search.value)
 
@@ -40,6 +39,25 @@ export default function Home() {
     console.error("Error fetching products:", error);
   }
 }
+
+    // Product Slider
+//   const [groceryNum, setGroceryNum] = useState(4);
+//   const len= CategorizedProducts[3]?.prod?.length - 1 ;
+  
+  
+//     useEffect(()=>{
+
+//     const interval = setInterval(() => {
+//     setGroceryNum((prev) => {
+//       if (prev >= len) {
+//         return 4;
+//       }
+//       return prev + 1;
+//     });
+//   }, 5000);
+  
+//   return () => clearInterval(interval);
+// }, [len])
 
   const searchProduct= () => {
       if(search !== ""){
@@ -74,7 +92,7 @@ useEffect(()=>{
     {fetchError && 
     <div className="font-semibold text-white text-center flex items-center justify-center mt-30">No product with &quot;{search}&quot; is Available</div>}
             {
-          searchMode ?
+                        searchMode ?
     <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 space-x-3 space-y-4 py-8">
                   {searchProducts.map((product, index) => (
                     <Product key={index} id={product.id} image={product.thumbnail} name={product.title} price={product.price} discountp={product.discountPercentage}/>
@@ -83,24 +101,24 @@ useEffect(()=>{
       :
       <div className="space-y-15">
         {CategorizedProducts.map((category, i)=> {
-        if(i<3)
           return(
         <div key={i}>
           <h1 className="font-bold text-white text-2xl">{category.title}</h1>
             <div className="w-full flex overflow-hidden mt-2">
         {
-          category.prod.map((product, index) => (
+          category.prod.map((product, index) => {
+            if(index<5)
+              return(
             <div key={index} className="w-full flex">
                <Product key={index} id={product.id} image={product.thumbnail} name={product.title} price={product.price} discountp={product.discountPercentage}/>
-              </div>
-            ))
+              </div>)
+        })
           }     
             </div>
         </div>)
-        })
-        }
-      </div>
-        }
+            })}     
+            </div>
+            }
     </div>
   )
 }
