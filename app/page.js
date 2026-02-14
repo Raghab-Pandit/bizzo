@@ -10,7 +10,7 @@ export default function Home() {
   const [searchMode, setSearchMode] = useState(false)
   const [products, setProducts] = useState([])
   const [searchProducts, setSearchProducts] = useState([]);
-  const [CategorizedProducts, setCategorizedProducts] = useState([]);
+  const [categorizedProducts, setCategorizedProducts] = useState([]);
 
   const search = useSelector((state) => state.search.value)
 
@@ -110,7 +110,7 @@ export default function Home() {
           </div>
           :
           <div className="space-y-15 mt-6">
-            {CategorizedProducts.map((category, i) => {
+            {categorizedProducts.map((category, i) => {
               if (category.prod.length>5) {
                 return (
                   <div key={i}>
@@ -151,7 +151,7 @@ export default function Home() {
                     </div>
                   </div>
                 )
-              } else if (category.prod.length<5) {
+              } else if (category.prod.length<=5) {
                 return (
                   <div key={i} className="space-y-5">
                     <h1 className="font-bold text-white text-2xl">{category.title}</h1>
