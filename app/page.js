@@ -111,7 +111,7 @@ export default function Home() {
           :
           <div className="space-y-15 mt-6">
             {CategorizedProducts.map((category, i) => {
-              if (category.title === 'Groceries') {
+              if (category.prod.length>5) {
                 return (
                   <div key={i}>
                     <h1 className="font-bold text-white text-2xl">{category.title}</h1>
@@ -151,7 +151,7 @@ export default function Home() {
                     </div>
                   </div>
                 )
-              } else if (category.title !== 'Groceries') {
+              } else if (category.prod.length<5) {
                 return (
                   <div key={i} className="space-y-5">
                     <h1 className="font-bold text-white text-2xl">{category.title}</h1>
