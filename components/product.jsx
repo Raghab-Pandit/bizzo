@@ -6,7 +6,7 @@ import { FaArrowUpRightFromSquare } from 'react-icons/fa6'
 const Product = ({id, image, name, price, discountp}) => {
   return (
     <>
-        <Link href={`/products/${id}`} target='_blank' className='group h-68 sm:h-80 w-40 lg:w-60 shadow-[0_4px_30px_rgba(0,0,0,0.1)]'>
+        <Link href={`/products/${id}`} target='_blank' className='group h-68 sm:h-80 w-40 z-45 lg:w-60 shadow-[0_4px_30px_rgba(0,0,0,0.1)]'>
             <div className="h-[70%]  relative overflow-hidden border border-transparent rounded-t-[20px] bg-gray-300/80 group-hover:bg-white transition-all duration-300 flex items-end justify-center">
             <div className="absolute flex items-center justify-end w-full invisible group-hover:visible bottom-0">
                 <button className='bg-transparent border-1 border-transparent px-4 py-1 rounded-full text-[#5a24c9]/70 transition-colors duration-300 cursor-pointer'>
