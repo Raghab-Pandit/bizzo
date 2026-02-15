@@ -3,6 +3,7 @@ import axiosInstance from "@/axiosInstance/axiosInstance";
 import Product from "@/components/product";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import ImageSlider from "@/components/imageSlider";
 
 export default function Home() {
 
@@ -87,7 +88,8 @@ export default function Home() {
   }, [search]);
 
   return (
-    <div className="mx-0 sm:mx-10 overflow-hidden my-2">
+    <>
+    <div className="mx-0 sm:mx-10 overflow-hidden my-2 mt-16">
       {/* <Product name="Sample Product" price="29.99" /> */}
       {fetchError &&
         <div className="font-semibold text-white text-center flex items-center justify-center mt-30">
@@ -96,19 +98,21 @@ export default function Home() {
       }
       {
         searchMode ?
-          <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 space-x-3 space-y-4 py-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 space-x-3 space-y-4 py-8">
             {searchProducts.map((product, index) => (
               <Product
-                key={index}
-                id={product.id}
-                image={product.thumbnail}
-                name={product.title}
-                price={product.price}
-                discountp={product.discountPercentage}
+              key={index}
+              id={product.id}
+              image={product.thumbnail}
+              name={product.title}
+              price={product.price}
+              discountp={product.discountPercentage}
               />
             ))}
           </div>
           :
+          <>
+            <ImageSlider/>
           <div className="space-y-15 mt-6">
             {categorizedProducts.map((category, i) => {
               if (category.prod.length>5) {
@@ -121,13 +125,12 @@ export default function Home() {
                           category.prod.map((product, index) => (
                             <div key={index} className="flex">
                               <Product
-                                key={index}
                                 id={product.id}
                                 image={product.thumbnail}
                                 name={product.title}
                                 price={product.price}
                                 discountp={product.discountPercentage}
-                              />
+                                />
                             </div>
                           ))
                         }
@@ -137,13 +140,12 @@ export default function Home() {
                           category.prod.map((product, index) => (
                             <div key={index} className="flex">
                               <Product
-                                key={index}
                                 id={product.id}
                                 image={product.thumbnail}
                                 name={product.title}
                                 price={product.price}
                                 discountp={product.discountPercentage}
-                              />
+                                />
                             </div>
                           ))
                         }
@@ -160,13 +162,12 @@ export default function Home() {
                         category.prod.map((product, index) => (
                           <div key={index} className="flex">
                             <Product
-                              key={index}
                               id={product.id}
                               image={product.thumbnail}
                               name={product.title}
                               price={product.price}
                               discountp={product.discountPercentage}
-                            />
+                              />
                           </div>
                         ))
                       }
@@ -176,7 +177,9 @@ export default function Home() {
               }
             })}
           </div>
+            </>
       }
     </div>
+    </>
   )
 }

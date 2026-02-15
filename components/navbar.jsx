@@ -20,7 +20,7 @@ const Navbar = () => {
 
 
   return (
-<div className="bg-gray-900 h-16 border-b border-[#712cdf70] flex items-center justify-between px-6 shadow-md">
+<div className="bg-gray-900 h-16 fixed top-0 left-0 w-full z-50 border-b border-[#712cdf70] flex items-center justify-between px-6 shadow-md">
   {/* Logo Section */}
   <Link className="flex items-center space-x-3 cursor-pointer" href={'/'}>
     <TbSwords size={32} className="text-[#702cdf]" />
